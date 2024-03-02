@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 const todoList = [
   {
@@ -16,11 +16,14 @@ const todoList = [
     id: '3',
     title: 'Complete lesson 1.1 DSA',
   },
-
+  {
+    id: '4',
+    title: 'Start learning Okta',
+  },
 ];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -33,7 +36,7 @@ function App() {
         })}
       </ul>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
