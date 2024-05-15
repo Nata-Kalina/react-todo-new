@@ -33,7 +33,7 @@ function App() {
         return {
           id: todo.id,
           title: todo.fields.title,
-          comletedAt: todo.fields.completedAt,
+          completedAt: todo.fields.completedAt,
         };
       });
 

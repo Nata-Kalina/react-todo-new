@@ -11,9 +11,10 @@ const AddTodoForm = ({ onAddTodo }) => {
 
   const handleAddTodo = (event) => {
     event.preventDefault();
-    if (todoTitle === '') return;
-    onAddTodo(todoTitle);
-    setTodoTitle('');
+    if (todoTitle.trim()) {
+      onAddTodo({ todoTitle });
+      setTodoTitle('');
+    }
   };
 
   return (
@@ -23,7 +24,9 @@ const AddTodoForm = ({ onAddTodo }) => {
           id="todoTitle"
           value={todoTitle}
           onInputChange={handleTitleChange}
-        ></InputWithLabel>
+        >
+          Title
+        </InputWithLabel>
         <button type="submit">Add</button>
       </form>
     </>
