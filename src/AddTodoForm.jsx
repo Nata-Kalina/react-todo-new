@@ -12,7 +12,7 @@ const AddTodoForm = ({ onAddTodo }) => {
   const handleAddTodo = (event) => {
     event.preventDefault();
     if (todoTitle.trim()) {
-      onAddTodo({ todoTitle });
+      onAddTodo({ title: todoTitle });
       setTodoTitle('');
     }
   };
