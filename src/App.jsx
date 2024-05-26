@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
@@ -95,23 +96,106 @@ function App() {
     postTodo(newTodo.title);
   };
 
-  const removeTodo = (item) => {
-    const newTodo = todoList.filter((todo) => item.id !== todo.id);
-    setTodoList(newTodo);
+  const removeTodo = async (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+    };
+
+    const url = `https://api.airtable.com/v0/${
+      import.meta.env.VITE_AIRTABLE_BASE_ID
+    }/${import.meta.env.VITE_TABLE_NAME}/${id}`;
+
+    try {
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        const message = `Error: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const newTodoList = todoList.filter((todo) => {
+        return id !== todo.id;
+      });
+      setTodoList(newTodoList);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const updateTodo = async (title, id) => {
+    const airtableData = {
+      fields: {
+        title,
+      },
+    };
+
+    const options = {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+      body: JSON.stringify(airtableData),
+    };
+
+    const url = `https://api.airtable.com/v0/${
+      import.meta.env.VITE_AIRTABLE_BASE_ID
+    }/${import.meta.env.VITE_TABLE_NAME}/${id}`;
+
+    try {
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        const message = `Error: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const dataResponse = await response.json();
+
+      const updatedTodo = {
+        id: dataResponse.id,
+        title: dataResponse.fields.title,
+      };
+
+      setTodoList((prevTodoList) =>
+        prevTodoList.map((todo) => (todo.id === id ? updatedTodo : todo))
+      );
+    } catch (error) {
+      console.error(error.message);
+      return null;
+    }
   };
 
   return (
-    <>
-      <header style={{ textAlign: 'center' }}>
-        <h1>Todo List</h1>
-      </header>
-      <AddTodoForm onAddTodo={addTodo} />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <header style={{ textAlign: 'center' }}>
+                <h1>Todo List</h1>
+              </header>
+              <AddTodoForm onAddTodo={addTodo} />
+              {isLoading ? (
+                <p>Loading...</p>
+              ) : (
+                <TodoList
+                  todoList={todoList}
+                  onRemoveTodo={removeTodo}
+                  onUpdateTodo={updateTodo}
+                />
+              )}
+            </>
+          }
+        />
+        <Route path="/new" element={<h1>New Todo List</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
