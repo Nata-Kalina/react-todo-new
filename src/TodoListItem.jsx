@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './TodoListItem.module.css';
 
 const TodoListItem = ({ todo, onRemoveTodo, onUpdateTodo }) => {
   const [isEditing, setIsEditing] = React.useState(false);
@@ -10,27 +11,46 @@ const TodoListItem = ({ todo, onRemoveTodo, onUpdateTodo }) => {
   };
 
   return (
-    <>
-      <li>
+    <tr>
+      <td>
+        {isEditing ? (
+          <input
+            type="text"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+          />
+        ) : (
+          <span>{todo.title}</span>
+        )}
+      </td>
+      <td>
         {isEditing ? (
           <>
-            <input
-              type="text"
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-            />
-            <button onClick={handleUpdate}>Update</button>
-            <button onClick={() => setIsEditing(false)}>Cancel</button>
+            <button onClick={handleUpdate} className={style.button}>
+              Update
+            </button>
+            <button
+              onClick={() => setIsEditing(false)}
+              className={style.button}
+            >
+              Cancel
+            </button>
           </>
         ) : (
           <>
-            <span>{todo.title}</span>
-            <button onClick={() => setIsEditing(true)}>Edit</button>
-            <button onClick={() => onRemoveTodo(todo.id)}>Remove</button>
+            <button onClick={() => setIsEditing(true)} className={style.button}>
+              Edit
+            </button>
+            <button
+              onClick={() => onRemoveTodo(todo.id)}
+              className={style.button}
+            >
+              Remove
+            </button>
           </>
         )}
-      </li>
-    </>
+      </td>
+    </tr>
   );
 };
 
