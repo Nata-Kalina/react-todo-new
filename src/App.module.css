@@ -6,7 +6,7 @@
 }
 
 .container {
-  height: 100vw;
+  height: 100vh;
   width: 100vw;
   padding: 20px;
   background: #f7fce6;
@@ -15,17 +15,13 @@
 }
 
 .todoListContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  margin: auto;
+  width: 400px;
+  margin: 0 auto;
   display: block;
 }
 
 table {
-  width: 130%;
+  width: 100%;
   margin: auto;
 }
 
@@ -84,5 +80,13 @@ table {
 
   .addTodoButton {
     margin-left: 3px;
+  }
+
+  .todoListContainer {
+    width: 75%;
+  }
+
+  .actions {
+    display: none;
   }
 }
