@@ -26,4 +26,15 @@
   .removeButton {
     margin-left: 3px;
   }
+  
+  .tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+  }
+
+  .tr td {
+    border: none;
+  }
+
 }

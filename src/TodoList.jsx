@@ -10,7 +10,7 @@ const TodoList = ({ todoList, onRemoveTodo, onUpdateTodo }) => {
           <thead>
             <tr>
               <th>Title</th>
-              <th>Actions</th>
+              <th className={style.actions}>Actions</th>
             </tr>
           </thead>
           <tbody>
