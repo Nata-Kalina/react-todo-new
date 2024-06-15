@@ -11,7 +11,7 @@ const TodoListItem = ({ todo, onRemoveTodo, onUpdateTodo }) => {
   };
 
   return (
-    <tr>
+    <tr className={style.tr}>
       <td>
         {isEditing ? (
           <input
