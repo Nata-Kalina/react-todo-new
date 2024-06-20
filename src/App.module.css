@@ -1,0 +1,92 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  padding: 20px;
+  background: #f7fce6;
+  color: #054274;
+  font-family: 'Kalam', sans-serif;
+}
+
+.todoListContainer {
+  width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+table {
+  width: 100%;
+  margin: auto;
+}
+
+.todoListContainer th,
+.todoListContainer td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.addTodoTitle {
+  padding-right: 10 px;
+  margin-right: 10 px;
+  padding-left: 10 px;
+  margin-left: 10 px;
+  color: #07724e;
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.addTodoButton {
+  background: #c7ece3;
+  border: 1px solid #171212;
+  padding: 3px;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.addTodoButton:hover {
+  background: #171212;
+  color: #c7ece3;
+}
+
+.headingH1 {
+  color: #053a88;
+  font-weight: 1300;
+  font-size: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .headingH1 {
+    font-weight: 800;
+    font-size: 26px;
+  }
+
+  .addTodoTitle {
+    padding-right: 0 px;
+    margin-right: 0 px;
+    padding-left: 0 px;
+    margin-left: 0 px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .addTodoButton {
+    margin-left: 3px;
+  }
+
+  .todoListContainer {
+    width: 75%;
+  }
+
+  .actions {
+    display: none;
+  }
+}

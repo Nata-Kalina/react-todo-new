@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
+import style from './App.module.css';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
@@ -177,19 +177,21 @@ function App() {
           path="/"
           element={
             <>
-              <header style={{ textAlign: 'center' }}>
-                <h1>Todo List</h1>
-              </header>
-              <AddTodoForm onAddTodo={addTodo} />
-              {isLoading ? (
-                <p>Loading...</p>
-              ) : (
-                <TodoList
-                  todoList={todoList}
-                  onRemoveTodo={removeTodo}
-                  onUpdateTodo={updateTodo}
-                />
-              )}
+              <div className={style.container} style={{ textAlign: 'center' }}>
+                <header style={{ textAlign: 'center' }}>
+                  <h1 className={style.headingH1}>Todo List</h1>
+                </header>
+                <AddTodoForm onAddTodo={addTodo} />
+                {isLoading ? (
+                  <p>Loading...</p>
+                ) : (
+                  <TodoList
+                    todoList={todoList}
+                    onRemoveTodo={removeTodo}
+                    onUpdateTodo={updateTodo}
+                  />
+                )}
+              </div>
             </>
           }
         />

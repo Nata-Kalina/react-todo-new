@@ -1,0 +1,39 @@
+.listItem {
+  color: #05668b;
+  font-size: 20px;
+}
+
+.button {
+  background: #c7ece3;
+  border: 1px solid #171212;
+  padding: 3px;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.button:hover {
+  background: #171212;
+  color: #c7ece3;
+}
+
+@media screen and (max-width: 600px) {
+  .ListItem {
+    font-size: 16px;
+  }
+
+  .removeButton {
+    margin-left: 3px;
+  }
+
+  .tr {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+  }
+
+  .tr td {
+    border: none;
+  }
+}
