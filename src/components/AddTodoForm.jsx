@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InputWithLabel from './InputWithLabel';
-import style from './App.module.css';
+import style from '../App.module.css';
 
 const AddTodoForm = ({ onAddTodo }) => {
   const [todoTitle, setTodoTitle] = React.useState('');
@@ -35,6 +36,10 @@ const AddTodoForm = ({ onAddTodo }) => {
       </form>
     </>
   );
+};
+
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func.isRequired,
 };
 
 export default AddTodoForm;

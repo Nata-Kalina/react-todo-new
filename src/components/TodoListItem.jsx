@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './TodoListItem.module.css';
+import PropTypes from 'prop-types';
 
 const TodoListItem = ({ todo, onRemoveTodo, onUpdateTodo }) => {
   const [isEditing, setIsEditing] = React.useState(false);
@@ -52,6 +53,15 @@ const TodoListItem = ({ todo, onRemoveTodo, onUpdateTodo }) => {
       </td>
     </tr>
   );
+};
+
+TodoListItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
+  onRemoveTodo: PropTypes.func.isRequired,
+  onUpdateTodo: PropTypes.func.isRequired,
 };
 
 export default TodoListItem;
