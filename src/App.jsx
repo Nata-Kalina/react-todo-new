@@ -199,12 +199,8 @@ function App() {
                   <p>Loading...</p>
                 ) : (
                   <>
-                    <TodoList
-                      todoList={todoList}
-                      onRemoveTodo={removeTodo}
-                      onUpdateTodo={updateTodo}
-                    />
-                    <button className={style.toggleButton}
+                    <button
+                      className={style.toggleButton}
                       onClick={() =>
                         setSortOrder((prev) =>
                           prev === 'asc' ? 'desc' : 'asc'
@@ -215,6 +211,11 @@ function App() {
                       Toggle Sort Order (
                       {sortOrder === 'asc' ? 'Ascending' : 'Descending'})
                     </button>
+                    <TodoList
+                      todoList={todoList}
+                      onRemoveTodo={removeTodo}
+                      onUpdateTodo={updateTodo}
+                    />
                   </>
                 )}
               </div>
