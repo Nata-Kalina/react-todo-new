@@ -9,25 +9,38 @@
   height: 100vh;
   width: 100vw;
   padding: 20px;
-  background: #f7fce6;
-  color: #054274;
-  font-family: 'Kalam', sans-serif;
+  background: #f7fce6 url('assets/image1.jpg') no-repeat center center;
+  background-size: cover;
+  color: #f3f4f4;
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .todoListContainer {
-  width: 400px;
+  width: 60%;
   margin: 0 auto;
   display: block;
+  background-color: rgba(243, 244, 244, 0.6);
+  color: #141414;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 table {
   width: 100%;
   margin: auto;
+  table-layout: fixed;
 }
 
-.todoListContainer th,
-.todoListContainer td {
+.todoListContainer th {
   border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 30px;
+}
+.todoListContainer td {
+  border: 1px solid #959b9a;;
   padding: 8px;
   text-align: left;
 }
@@ -44,7 +57,7 @@ table {
 
 .addTodoButton,
 .toggleButton {
-  background: #c7ece3;
+  background: #959b9a;
   border: 1px solid #171212;
   padding: 3px;
   cursor: pointer;
@@ -59,9 +72,13 @@ table {
 }
 
 .headingH1 {
-  color: #053a88;
+  color: #f3f4f4;
   font-weight: 1300;
-  font-size: 50px;
+  font-size: 60px;
+}
+
+.actions {
+  width: 150px;
 }
 
 @media screen and (max-width: 600px) {

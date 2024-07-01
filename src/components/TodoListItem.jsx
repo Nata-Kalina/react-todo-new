@@ -27,9 +27,7 @@ const TodoListItem = ({ todo, onRemoveTodo, onUpdateTodo }) => {
       <td>
         {isEditing ? (
           <>
-            <button onClick={handleUpdate} className={style.button}>
-              Update
-            </button>
+            <button onClick={handleUpdate}>Update</button>
             <button
               onClick={() => setIsEditing(false)}
               className={style.button}
@@ -39,12 +37,15 @@ const TodoListItem = ({ todo, onRemoveTodo, onUpdateTodo }) => {
           </>
         ) : (
           <>
-            <button onClick={() => setIsEditing(true)} className={style.button}>
+            <button
+              onClick={() => setIsEditing(true)}
+              className={style.actionButton}
+            >
               Edit
             </button>
             <button
               onClick={() => onRemoveTodo(todo.id)}
-              className={style.button}
+              className={style.actionButton}
             >
               Remove
             </button>
