@@ -42,7 +42,8 @@ table {
   font-size: 30px;
 }
 
-.addTodoButton {
+.addTodoButton,
+.toggleButton {
   background: #c7ece3;
   border: 1px solid #171212;
   padding: 3px;

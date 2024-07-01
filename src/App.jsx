@@ -7,6 +7,7 @@ import AddTodoForm from './components/AddTodoForm';
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [sortOrder, setSortOrder] = React.useState('asc');
 
   const fetchData = async () => {
     const options = {
@@ -18,7 +19,9 @@ function App() {
 
     const url = `https://api.airtable.com/v0/${
       import.meta.env.VITE_AIRTABLE_BASE_ID
-    }/${import.meta.env.VITE_TABLE_NAME}`;
+    }/${
+      import.meta.env.VITE_TABLE_NAME
+    }?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`;
 
     try {
       const response = await fetch(url, options);
@@ -29,6 +32,16 @@ function App() {
       }
 
       const data = await response.json();
+
+      data.records.sort((objectA, objectB) => {
+        const titleA = objectA.fields.title.toUpperCase();
+        const titleB = objectB.fields.title.toUpperCase();
+        if (sortOrder === 'asc') {
+          return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+        } else {
+          return titleA > titleB ? -1 : titleA < titleB ? 1 : 0;
+        }
+      });
 
       const todos = data.records.map((todo) => {
         return {
@@ -48,7 +61,7 @@ function App() {
 
   React.useEffect(() => {
     fetchData();
-  }, []);
+  }, [sortOrder]);
 
   const postTodo = async (title) => {
     const airtableData = {
@@ -185,11 +198,24 @@ function App() {
                 {isLoading ? (
                   <p>Loading...</p>
                 ) : (
-                  <TodoList
-                    todoList={todoList}
-                    onRemoveTodo={removeTodo}
-                    onUpdateTodo={updateTodo}
-                  />
+                  <>
+                    <TodoList
+                      todoList={todoList}
+                      onRemoveTodo={removeTodo}
+                      onUpdateTodo={updateTodo}
+                    />
+                    <button className={style.toggleButton}
+                      onClick={() =>
+                        setSortOrder((prev) =>
+                          prev === 'asc' ? 'desc' : 'asc'
+                        )
+                      }
+                      style={{ margin: '20px' }}
+                    >
+                      Toggle Sort Order (
+                      {sortOrder === 'asc' ? 'Ascending' : 'Descending'})
+                    </button>
+                  </>
                 )}
               </div>
             </>
