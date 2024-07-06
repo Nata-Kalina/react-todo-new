@@ -27,16 +27,17 @@ This Todo App is a simple yet powerful tool designed to help users manage their 
 
 ### Installation
 1. Clone the repository:
+   ```bash
    git clone https://github.com/nata-kalina/react-todo-new.git
    cd todo-app
 
-2. Install dependencies:
+3. Install dependencies:
    npm install
 
-3. Configure your Airtable API details:
+4. Configure your Airtable API details:
    Update VITE_AIRTABLE_API_TOKEN, VITE_AIRTABLE_BASE_ID, and VITE_TABLE_NAME with your Airtable details.
 
-4. Running the App
+5. Running the App
    Execute the following command to start the development server:
    npm start
 
