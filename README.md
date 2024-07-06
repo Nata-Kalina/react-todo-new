@@ -32,13 +32,15 @@ This Todo App is a simple yet powerful tool designed to help users manage their 
    cd todo-app
 
 3. Install dependencies:
+   ```bash
    npm install
 
-4. Configure your Airtable API details:
-   Update VITE_AIRTABLE_API_TOKEN, VITE_AIRTABLE_BASE_ID, and VITE_TABLE_NAME with your Airtable details.
+5. Configure your Airtable API details:
+   - Update VITE_AIRTABLE_API_TOKEN, VITE_AIRTABLE_BASE_ID, and VITE_TABLE_NAME with your Airtable details.
 
-5. Running the App
-   Execute the following command to start the development server:
+6. Running the App
+   - Execute the following command to start the development server:
+   ```bash
    npm start
 
 ### Usage
