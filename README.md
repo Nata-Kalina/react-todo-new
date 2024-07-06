@@ -41,7 +41,7 @@ This Todo App is a simple yet powerful tool designed to help users manage their 
 6. Running the App
    - Execute the following command to start the development server:
    ```bash
-   npm start
+   npm run dev
 
 ### Usage
 Once the app is running, you can start adding, removing, and updating your todo items. Use the sort button to toggle the order of the items.
